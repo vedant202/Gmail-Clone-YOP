@@ -1,0 +1,32 @@
+.box{
+    margin-left: 5px;
+}
+.sidebar_compose{
+    background-color: #c2e7ff !important;
+    color: #001d35 !important;
+    min-width: 140px !important;
+    padding: 15px !important;
+    border-radius: 16px !important;
+    text-transform: none;
+}
+.sidebar_compose svg{
+    margin-right: 10px;
+}
+.sidebar_list{
+    padding: 10px 0 0 5px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+}
+
+.sidebar_list a li svg{
+    margin-right: 20px;
+}
+.listbutton{
+    padding: 0px !important;
+    /* margin: 0 !important; */
+}
+.navlink{
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
