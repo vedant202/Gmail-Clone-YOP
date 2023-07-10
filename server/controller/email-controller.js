@@ -22,10 +22,32 @@ export const getEmails = async(request,response)=>{
             emails = await Email.find({'type':'drafts'});
             console.log("Draft Emails "+emails)
         }
+
+        if(request.params.type=='bin'){
+            emails = await Email.find({'bin':true});
+            console.log("Bin Emails "+emails);
+        }
+        if(request.params.type=='allmail'){
+            emails = await Email.find();
+            console.log("All Mails "+emails)
+        }
+        if(request.params.type=='starred'){
+            emails = await Email.find({'starred':true});
+            console.log("All Mails "+emails)
+        }
         
 
         return response.status(200).json(emails);
     } catch (error) {
+        return response.status(500).json(error.message);
+    }
+}
+
+export const toggleStarredEmails = async(request,response)=>{
+    try{
+        await Email.updateOne({_id:request.body.id},{$set:{starred:request.body.value}});
+        return response.status(200).json("emails starred marked");
+    }catch(error){
         return response.status(500).json(error.message);
     }
 }
@@ -44,3 +66,15 @@ export const saveDraftemails = (request,response)=>{
     }
 }
 
+
+
+export const moveEmailsBin=async(request,response)=>{
+    try{
+        await Email.updateMany({_id:{$in:request.body}},{$set:{bin:true,starred:false,type:''}})
+
+        return response.status(200).json('email deleted successfully');
+    }catch(error){
+        console.log(error)
+        return response.status(500).json(error);
+    }
+}

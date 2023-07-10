@@ -1,0 +1,57 @@
+.viewEmail_iconwrapper{
+    padding: 15px;
+}
+
+.viewEmail_subject p{
+    font-size: 22px;
+    margin: 10px 0px 20px 75px;
+    display: flex;
+
+}
+.viewEmail_subject_inbox{
+    font-size: 12px;
+    background-color: #ddd;
+    color: #222;
+    padding: 2px 4px;
+    margin-left: 6px;
+    border-radius: 4px;
+    align-self: center;
+}
+.Container{
+    margin-left: 15px;
+}
+
+.viewEmail_email{
+    display: flex;
+    width: 100%;
+
+}
+
+.viewEmail_email img{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 5px 10px 0 10px;
+    background-color: #cccccc;
+
+}
+
+.viewEmail_email span{
+    font-size: 12px;
+    color: #5e5e5e;
+}
+.viewEmail_email_name{
+    display: flex;
+    align-items: center;
+}
+
+.viewEmail_email_date{
+    font-size: 12px;
+    
+    margin: 0 50px 0 auto;
+    color: #5e5e5e;
+}
+
+.viewEmail_email_body{
+    margin-left: 15px;
+}

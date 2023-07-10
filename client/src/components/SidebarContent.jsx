@@ -23,7 +23,7 @@ export default function SidebarContent() {
                 {
                     SIDEBAR_DATA.map(data=>{
                         return <NavLink className="navlink" key={data.name} to={`${routes.emails.path}/${data.name}`}>
-                            <ListItem style={type.toLowerCase()===data.name.toLowerCase()?{
+                            <ListItem style={type?.toLowerCase()===data?.name?.toLowerCase()?{
                             backgroundColor:"#d3e3fd",borderRadius:"0 16px 16px 0"
                         }:{}} ><ListItemButton className='listbutton'><data.icon fontSize='small' />{data.title}</ListItemButton></ListItem>
                         </NavLink> 
