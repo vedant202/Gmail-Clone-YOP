@@ -36,6 +36,7 @@ export const getEmails = async(request,response)=>{
             console.log("All Mails "+emails)
         }
         
+        
 
         return response.status(200).json(emails);
     } catch (error) {
@@ -74,6 +75,16 @@ export const moveEmailsBin=async(request,response)=>{
 
         return response.status(200).json('email deleted successfully');
     }catch(error){
+        console.log(error)
+        return response.status(500).json(error);
+    }
+}
+
+export const deleteEmails = async(request,response)=>{
+    try {
+        await Email.deleteMany({_id:{$in:request.body}})
+        return response.status(200).json('email deleted successfully');
+    } catch (error) {
         console.log(error)
         return response.status(500).json(error);
     }

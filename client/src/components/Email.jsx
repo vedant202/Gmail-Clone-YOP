@@ -7,7 +7,7 @@ import { routes } from '../routes/routes';
 import useApi from '../hooks/useApi';
 import { API_URLS } from '../services/api.urls';
 
-export default function Email({mail,selectedEmails,setRefreshScreen}) {
+export default function Email({mail,selectedEmails,setSelectedEmails,setRefreshScreen}) {
   const navigate = useNavigate();
     console.log(mail)
 
@@ -17,11 +17,17 @@ export default function Email({mail,selectedEmails,setRefreshScreen}) {
     toggleStarredService.call({id:mail._id, value:!mail.starred});
     setRefreshScreen(prevState=>!prevState);
   }
-
+  const valueChange = ()=>{
+    if(selectedEmails.includes(mail._id)){
+      setSelectedEmails(prevState=>prevState.filter(id=>id!=mail._id));
+    }else{
+      setSelectedEmails(prevState=>[...prevState,mail._id])
+    }
+  }
   return (
     <div className='email_wrapper'>
       <div>
-        <Checkbox checked={selectedEmails?.includes(mail._id)} size='small'/>
+        <Checkbox checked={selectedEmails?.includes(mail._id)} onChange={()=>valueChange()} size='small'/>
         {
           mail.starred?
             <Star style={{marginRight:10,overflow:'hidden'}} size='small' onClick={()=>{toggleStarredMails()}}/>

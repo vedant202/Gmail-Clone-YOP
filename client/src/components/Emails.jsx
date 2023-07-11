@@ -7,6 +7,8 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Checkbox } from "@mui/material";
 import "../css/Emails.css";
 import Email from "./Email";
+import NoEmails from "./NoEmails";
+import { EMPTY_TABS } from "../constants/constants";
 
 const Emails = ()=>{
     const {toggle} = useOutletContext();
@@ -17,6 +19,7 @@ const Emails = ()=>{
 
     const api = useApi(API_URLS.getEmailFromType);
     const moveEmailsToBinService = useApi(API_URLS.moveEmailsToBin);
+    const deleteEmails = useApi(API_URLS.deleteEmail);
 
     const [selectedEmails, setSelectedEmails] = useState([]);
 
@@ -37,7 +40,7 @@ const Emails = ()=>{
 
     const deleteSelectedEmails = (e)=>{
         if(type==='bin'){
-
+            deleteEmails.call(selectedEmails);
         }
         else{
             moveEmailsToBinService.call(selectedEmails);
@@ -55,8 +58,11 @@ const Emails = ()=>{
             <div>
                 {
                     api && api.response && api.response.map((mail)=>(
-                        <Email selectedEmails={selectedEmails} key={mail._id} mail={mail} setRefreshScreen={setRefreshScreen} />
+                        <Email selectedEmails={selectedEmails} setSelectedEmails={setSelectedEmails} key={mail._id} mail={mail} setRefreshScreen={setRefreshScreen} />
                     ))
+                }
+                {
+                    api?.response?.length === 0 && <NoEmails message={EMPTY_TABS[type]} />
                 }
             </div> 
         </div>
