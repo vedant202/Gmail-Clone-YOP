@@ -14,7 +14,7 @@ export const EMPTY_TABS = {
         heading: 'Your inbox is empty',
         subHeading: "Mails that don't appear in other tabs will be shown here."
     },
-    drafts: {
+    draft: {
         heading: "You don't have any saved drafts.",
         subHeading: "Saving a draft allows you to keep a message you aren't ready to send yet."
     },
